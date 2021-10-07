@@ -9,6 +9,7 @@ requirements = [
 ]
 
 setup(
+    
     name='traquitanas',  # Nome (não precisa ser o nome do repositório, nem de qualquer pasta...)
     version='1.0.9',
     author='Michel Metran',
