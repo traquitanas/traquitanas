@@ -56,6 +56,7 @@ def get_list_ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
     return list_ceps, list_bairros
 
 
+
 def get_random_complete_address(cep):
     """
     Pega um endereço a parte de um CEP
