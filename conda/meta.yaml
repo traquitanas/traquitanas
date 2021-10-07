@@ -1,5 +1,5 @@
-{% set name = "click" %}
-{% set version = "7.0" %}
+{% set name = "traquitanas" %}
+{% set version = "1.0" %}
 
 package:
   name: "{{ name|lower }}"
