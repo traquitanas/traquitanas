@@ -36,6 +36,11 @@ jobs:
 
 
 
+# https://giswqs.medium.com/building-a-conda-package-and-uploading-it-to-anaconda-cloud-6a3abd1c5c52      
+# https://github.com/maxibor/conda-package-publish-action
+# https://github.com/rfun/tethysapp-servicetest/blob/master/.github/workflows/main.yml
+
+
 
 
 # name: Publish
@@ -67,7 +72,7 @@ jobs:
 
 
 
-# https://github.com/rfun/tethysapp-servicetest/blob/master/.github/workflows/main.yml
+
 
 # name: Publish Conda 📦
 
@@ -122,6 +127,3 @@ jobs:
 #       with:
 #         subDir: 'conda'
 #         AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
-
-# https://giswqs.medium.com/building-a-conda-package-and-uploading-it-to-anaconda-cloud-6a3abd1c5c52      
-# https://github.com/maxibor/conda-package-publish-action
