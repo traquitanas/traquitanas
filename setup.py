@@ -18,9 +18,7 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/open-dsa/gerador_endereco',
     package_dir = {'': 'src'}, # Our packages live under src but src is not a package itself    
-    #packages=find_packages(),
-    packages=find_packages('src.*', exclude=['*tests*']),
-    #include_package_data=False, # https://stackoverflow.com/questions/61274967/why-cant-i-exclude-tests-directory-from-my-python-wheel-using-exclude
+    packages=find_packages('src', exclude=['tests']),
     py_modules = ['traquitanas'],
     install_requires=requirements,
     keywords='python, endereço aleatório, address',
@@ -32,12 +30,3 @@ setup(
         'Intended Audience :: Developers',
     ],
 )
-
-# package_dir={
-#     'scripts': 'random_address',
-# },
-# include_package_data=True,
-# package_data={
-#     'myapp': ['data/*.txt'],
-# },
-# py_modules=['gerador_endereco'],
