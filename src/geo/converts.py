@@ -3,10 +3,6 @@ import requests
 from pycep_correios import get_address_from_cep, WebService
 
 
-#VERSION = (1, 0, 7, 'dev0')
-#VERSION = (1, 0, 1)
-#__version__ = '.'.join(map(str, VERSION))
-
 
 def ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
     """
@@ -56,36 +52,3 @@ def ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
     return list_ceps, list_bairros
 
 
-
-def get_random_complete_address(cep):
-    """
-    Pega um endereço a parte de um CEP
-
-    :param cep: Definição do CEP que se deseja obter o endereço (Exemplo: '13419-398')
-    :return: String com o endereço completo.
-
-    """
-    # Endereço
-    end = get_address_from_cep(cep, webservice=WebService.VIACEP)
-
-    # Adiciona um número aleatório
-    end['complemento'] = '{}'.format(random.randrange(1, 999))
-
-    # Cria uma chave no dict com Endereço Completo
-    end['endereco_completo'] = '{}, {} - {} - {}, {} - CEP: {}'.format(
-        end['logradouro'],
-        end['complemento'],
-        end['bairro'],
-        end['cidade'],
-        end['uf'],
-        end['cep'],
-    )
-    print('Endereço Aleatório:\n{}'.format(end['endereco_completo']))
-    return end['endereco_completo']
-
-
-if __name__ == '__main__':
-    # Para testes apenas
-    listas = get_list_ceps_bairros(estado='sp', municipio='piracicaba')
-    end = get_random_complete_address(random.choice(listas[0]))
-    print(end)
