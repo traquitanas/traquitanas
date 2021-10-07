@@ -10,7 +10,7 @@ requirements = [
 
 setup(
     name='traquitanas',  # Nome (não precisa ser o nome do repositório, nem de qualquer pasta...)
-    version='1.0.10',
+    version='1.0.11',
     author='Michel Metran',
     author_email='michelmetran@gmail.com',
     description='Small Defs...',
