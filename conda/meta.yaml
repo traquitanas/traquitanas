@@ -23,7 +23,7 @@ requirements:
     - python
   run:
     - python
-    - pandas
+#    - pandas
 
 # test:
 #   imports:
