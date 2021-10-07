@@ -4,8 +4,8 @@ from pycep_correios import get_address_from_cep, WebService
 
 
 #VERSION = (1, 0, 7, 'dev0')
-VERSION = (1, 0, 0)
-__version__ = '.'.join(map(str, VERSION))
+#VERSION = (1, 0, 1)
+#__version__ = '.'.join(map(str, VERSION))
 
 
 def get_list_ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
