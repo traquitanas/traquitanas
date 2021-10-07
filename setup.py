@@ -8,7 +8,7 @@ requirements = [
     'requests>=2.10.1',
 ]
 
-VERSION = (1, 0, 12)     # (1, 0, 7, 'dev0')
+VERSION = (1, 0, 13)     # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
@@ -22,7 +22,7 @@ setup(
     url='https://github.com/open-dsa/gerador_endereco',
     package_dir = {'': 'src'}, # Our packages live under src but src is not a package itself    
     packages=find_packages('src', exclude=['tests']),
-    py_modules = ['traquitanas'],
+    #py_modules = ['traquitanas'], # Quando trata-se apenas de um módulo
     install_requires=requirements,
     keywords='python, endereço aleatório, address',
     classifiers=[
