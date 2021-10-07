@@ -3,9 +3,6 @@ import requests
 from pycep_correios import get_address_from_cep, WebService
 
 
-#VERSION = (1, 0, 7, 'dev0')
-#VERSION = (1, 0, 1)
-#__version__ = '.'.join(map(str, VERSION))
 
 
 def get_list_ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
@@ -85,7 +82,4 @@ def get_random_complete_address(cep):
 
 
 if __name__ == '__main__':
-    # Para testes apenas
-    listas = get_list_ceps_bairros(estado='sp', municipio='piracicaba')
-    end = get_random_complete_address(random.choice(listas[0]))
-    print(end)
+    print('Fim')

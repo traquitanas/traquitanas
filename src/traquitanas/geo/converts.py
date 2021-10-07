@@ -52,3 +52,6 @@ def ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
     return list_ceps, list_bairros
 
 
+
+if __name__ == '__main__':
+    print('Fim')

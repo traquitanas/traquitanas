@@ -1,4 +1,4 @@
-from setuptools import setup, find_namespace_packages, find_packages
+from setuptools import setup, find_packages
 
 with open('README.md', 'r') as f:
     long_description = f.read()
@@ -8,9 +8,12 @@ requirements = [
     'requests>=2.10.1',
 ]
 
+VERSION = (1, 0, 1)     # (1, 0, 7, 'dev0')
+__version__ = '.'.join(map(str, VERSION))
+
 setup(
     name='traquitanas',  # Nome (não precisa ser o nome do repositório, nem de qualquer pasta...)
-    version='1.0.11',
+    version=__version__,
     author='Michel Metran',
     author_email='michelmetran@gmail.com',
     description='Small Defs...',
