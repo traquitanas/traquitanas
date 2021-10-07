@@ -3,7 +3,7 @@
 
 package:
   name: "traquitanas"
-  version: "1.0.12"
+  version: "1.1.1"
   #name: "{{ name|lower }}"
   #version: "{{ version }}"
 
