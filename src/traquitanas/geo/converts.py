@@ -1,57 +1,75 @@
 import random
 import requests
-from pycep_correios import get_address_from_cep, WebService
 
 
-
-def ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
+def dms2dd(coord):
     """
-    Função que auxilia na definição de endereços aleatórios em uma cidade.
+    Convert geographic coordinates in
+    format degrees, minutes and seconds (23°06’12,48”S)
+    in decimal degrees
 
-    :param estado: sigla da unidade da federação (default: "sp")
-    :param municipio: nome do município (default: "piracicaba")
-    :param loop: quanto maior o número de loops, maior a lista  (default: 20)
-    :return: Output consiste em duas listas (list_ceps, list_bairros)
+    :param coord: string 23°06’12,48”S
+    :return: float -23.10346666666667
     """
-    termos = [
-        'rua', 'avenida', 'praça', 'bosque',  # Padrão
-        'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
-        'julho', 'agosto', 'setembro', 'outubro', 'novembro',
-        'dezembro',  # Meses
-        'marechal', 'sargento', 'duque', 'soldado', 'capitão', 'major',  # Patentes
-        'dom', 'senhor', 'senhora',  # Pronomes de Tratamento
-        'almeida', 'caetano', 'pedro', 'barbosa', 'rui', 'pinto', 'joão', 'são',  # Nomes
-    ]
-    i = 1
-    list_ceps = []
-    list_bairros = []
-    while i <= loops:
-        url = 'https://viacep.com.br/ws/{}/{}/{}/json/'.format(estado, municipio, random.choice(termos))
-        resp = requests.get(url)
-        json = resp.json()
-        for data in json:
-            list_ceps.append(data['cep'])
-            list_bairros.append(data['bairro'])
-        i += 1
+    # Splitar coordenada
+    graus = float(coord.split('°')[0])
+    minutos = float((coord.split('°')[1]).split('’')[0])
+    segundos = float((((coord.split('°')[1]).split('’')[1]).split('”')[0]).replace(',', '.'))
+    direction = (((coord.split('°')[1]).split('’')[1]).split('”')[1])
 
-    # CEPs
-    list_ceps = list(set(list_ceps))
-    list_ceps.sort()
+    # Calcular
+    coord_dm = graus + (minutos / 60) + (segundos / 3600)
 
-    # Bairros
-    list_bairros = list(set(list_bairros))
-    list_bairros.sort()
+    # Converter parâmetro textual
+    if direction in ('S', 's', 'O', 'o'):
+        return coord_dm * -1
+    else:
+        return coord_dm
 
-    print(
-        'Município: {}-{}\nCEPs distintos: {}\nBairros distintos: {}'.format(
-            municipio.title(), estado.upper(),
-            len(list_ceps),
-            len(list_bairros)
-        )
-    )
-    return list_ceps, list_bairros
 
+def df2geojson(df, lat='latitude', long='longitude', remove_coords_properties=True):
+    """
+    Convert um dataframe, com colunas de latitude e longitude, em um objeto geojson
+    https://notebook.community/gnestor/jupyter-renderers/notebooks/nteract/pandas-to-geojson
+    :param df:
+    :param lat: Nome da coluna no dataframe que tem os dados de latitude
+    :param long: Nome da coluna no dataframe que tem os dados de longitude
+    :param remove_coords_properties:
+    :return:
+    """
+
+    # Create a new python dict to contain our geojson data, using geojson format
+    geojson = {'type': 'FeatureCollection', 'features': []}
+
+    # Loop through each row in the dataframe and convert each row to geojson format
+    for _, row in df.iterrows():
+        # Create a feature template to fill in
+        feature = {
+            'type': 'Feature',
+            'properties': {},
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [],
+            }
+        }
+
+        # Fill in the coordinates
+        feature['geometry']['coordinates'] = [row[long], row[lat]]
+
+        # for each column, get the value and add it as a new feature property
+        properties = list(df.columns)
+        if remove_coords_properties:
+            properties.remove(lat)
+            properties.remove(long)
+
+        for prop in properties:
+            feature['properties'][prop] = row[prop]
+
+        # Add this feature (aka, converted dataframe row) to the list of features inside our dict
+        geojson['features'].append(feature)
+
+    return geojson
 
 
 if __name__ == '__main__':
-    print('Fim')
+    print(dms2dd('23°06’12,48”S'))
