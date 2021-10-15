@@ -6,9 +6,10 @@ with open('README.md', 'r') as f:
 requirements = [
     'pycep_correios>=5.0.0',
     'requests>=2.10.1',
+    'chardet>=4.0.0',
 ]
 
-VERSION = (1, 0, 14)  # (1, 0, 7, 'dev0')
+VERSION = (1, 0, 15)  # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
@@ -33,3 +34,7 @@ setup(
         'Intended Audience :: Developers',
     ],
 )
+
+
+#TODO: Add version in traquitanas.__version__
+# https://stackoverflow.com/questions/17791481/creating-a-version-attribute-for-python-packages-without-getting-into-troubl
