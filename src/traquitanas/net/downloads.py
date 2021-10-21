@@ -9,10 +9,6 @@ def download_urls(urls, path, get_filename_from_url=True):
     """
     Function to download list of files with a progress bar.
 
-    #urls = ('http://sage.saude.gov.br/dados/sisagua/10Pontos_de_captacao_de_agua/10PontoCaptacao.zip',
-    #        'http://sage.saude.gov.br/dados/sisagua/10Pontos_de_captacao_de_agua/10PontoCaptacao.zip')
-    #path = os.path.join('home/michel/Geodata/Sourcecodes/case_sisgua', 'data', 'DadosOriginais')
-    #download_urls(urls, path)
 
     :param urls: Lista ou tuple, a depender da função #
     :param path: Local onde os arquivos serão inseridos
@@ -44,12 +40,23 @@ def download_urls(urls, path, get_filename_from_url=True):
                 iterable=r.iter_content(chunk_size=chunk_size),
                 total=int(total_size / chunk_size),
                 unit='MB',
-                desc=str(i + 1) + '/' + str(n_urls)
+                desc=f'{i + 1}/{n_urls}'
             ):
                 f.write(data)
 
         # Interactions
-        i = i + 1
+        i += 1
 
         # Definir um intervalo de tempo
         time.sleep(random.randint(1, 3))
+
+
+if __name__ == '__main__':
+    urls = [
+        'https://sage.saude.gov.br/dados/sisagua/cadastro_pontos_captacao.zip',
+        'https://sage.saude.gov.br/dados/sisagua/cadastro_tratamento_de_agua.zip',
+        'https://sage.saude.gov.br/dados/sisagua/cadastro_populacao_abastecida.zip',
+    ]
+    path = os.path.join('..', '..', '..', 'data')
+    os.makedirs(path, exist_ok=True)
+    download_urls(urls, path)
