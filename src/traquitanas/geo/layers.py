@@ -1,6 +1,26 @@
 import folium
 
 
+def add_lyr_google_hybrid(min_zoom, max_zoom):
+    row = {
+        'link': 'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
+        'name': 'Google Hybrid',
+        'attribution': 'https://www.google.com/maps',
+    }
+    lyr = folium.TileLayer(
+        tiles=row['link'],
+        attr=('<a href="{}" target="blank">{}</a>'.format(row['attribution'], row['name'])),
+        name=row['name'],
+        min_zoom=min_zoom,
+        max_zoom=max_zoom,
+        subdomains=['mt0', 'mt1', 'mt2', 'mt3'],
+        overlay=False,
+        control=True,
+        show=True,
+    )
+    return lyr
+
+
 def add_lyr_google_satellite(min_zoom, max_zoom):
     row = {
         'link': 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
