@@ -6,7 +6,7 @@ def dms2dd(coord):
     """
     Convert geographic coordinates in
     format degrees, minutes and seconds (23°06’12,48”S)
-    in decimal degrees
+    in decimal degrees (e.g. -23.10346666666667)
 
     :param coord: string 23°06’12,48”S
     :return: float -23.10346666666667
@@ -29,7 +29,7 @@ def dms2dd(coord):
 
 def df2geojson(df, lat='latitude', long='longitude', remove_coords_properties=True):
     """
-    Convert um dataframe, com colunas de latitude e longitude, em um objeto geojson
+    Convert um dataframe, com colunas de latitude e longitude, em um objeto geojson de pontos
     https://notebook.community/gnestor/jupyter-renderers/notebooks/nteract/pandas-to-geojson
     :param df:
     :param lat: Nome da coluna no dataframe que tem os dados de latitude
