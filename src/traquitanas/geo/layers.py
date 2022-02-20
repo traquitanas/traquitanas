@@ -81,5 +81,19 @@ def add_lyr_google_streets(min_zoom, max_zoom):
     return lyr
 
 
+def add_lyr_cartodbpositron(min_zoom, max_zoom):
+    lyr = folium.TileLayer(
+        tiles='cartodbpositron',
+        attr='Carto',
+        name='CartoDB Positron',
+        min_zoom=min_zoom,
+        max_zoom=max_zoom,
+        overlay=False,
+        control=True,
+        show=False,
+    )
+    return lyr
+
+
 if __name__ == '__main__':
     pass

@@ -16,9 +16,9 @@ def predict_encoding(file_path, n_lines=30):
     :return: Encoding.
 
     """
-
     # Open the file as binary data
     with open(file_path, 'rb') as f:
         # Join binary lines for specified number of lines
         raw_data = b''.join([f.readline() for line in range(n_lines)])
-    return chardet.detect(raw_data)['encoding']
+    enc = chardet.detect(raw_data)['encoding']
+    return enc
