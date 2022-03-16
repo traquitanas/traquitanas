@@ -9,7 +9,7 @@ for line in open('requirements.txt'):
     if not li.startswith('#'):
         requirements.append(line.rstrip())
 
-VERSION = (1, 0, 25)  # (1, 0, 7, 'dev0')
+VERSION = (1, 0, 27)  # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
@@ -21,7 +21,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/traquitanas/traquitanas',
-    keywords='python, endereço aleatório, address',
+    keywords='python, funções aleatórias',
 
     # Python and Packages
     python_requires='>=3',

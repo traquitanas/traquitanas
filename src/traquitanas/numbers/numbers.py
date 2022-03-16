@@ -1,4 +1,4 @@
-## Inteiro para Romano
+# Inteiro para Romano
 def int_to_roman(num):
     """
 
@@ -28,11 +28,7 @@ def int_to_roman(num):
     return res
 
 
-
-
-## Romano para Inteiro
-
-
+# Romano para Inteiro
 def roman_to_int(s):
     """
     https://www.tutorialspoint.com/roman-to-integer-in-python

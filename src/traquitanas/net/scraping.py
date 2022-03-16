@@ -1,10 +1,7 @@
 import os
 import requests
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
 def create_driver(download_path, headless=False, adds_path=os.path.join('..', 'adds'),
@@ -35,6 +32,7 @@ def create_driver(download_path, headless=False, adds_path=os.path.join('..', 'a
     options.headless = headless
 
     # Driver
+    global driver
     driver = webdriver.Firefox(
         firefox_profile=profile,
         options=options,
@@ -42,3 +40,7 @@ def create_driver(download_path, headless=False, adds_path=os.path.join('..', 'a
     )
     driver.install_addon(os.path.abspath(os.path.join(adds_path, 'xpath.xpi')), temporary=True)
     return driver
+
+
+if __name__ == '__main__':
+    pass
