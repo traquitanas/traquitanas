@@ -42,9 +42,21 @@ geo.converts.df2geojson(df, lat='latitude', long='longitude', remove_coords_prop
 
 <br>
 
+----
+
+#### *Utils*
+
+```python
+from traquitanas import utils
+
+utils.predict_encoding()
+```
+
+<br>
+
+----
+
 #### *Layers*
-
-
 
 
 ----
@@ -53,5 +65,30 @@ geo.converts.df2geojson(df, lat='latitude', long='longitude', remove_coords_prop
 
 
 
+<br>
 
+----
 
+## Dados
+
+- ...
+- ...
+- ...
+
+<br>
+
+----
+
+## Google Colab
+
+Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab](https://colab.research.google.com/drive/1WfiEeO4jeeiLPiCknGWfvHI-O3b5NbjE?usp=sharing).
+
+<br>
+
+----
+
+## *TODO*
+
+- ...
+- ...
+- ...

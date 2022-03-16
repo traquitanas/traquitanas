@@ -31,7 +31,7 @@ def download_urls(urls, path, get_filename_from_url=True):
 
         # File size
         r = requests.get(url, stream=True)
-        chunk_size = 1024 * 1024
+        chunk_size = 1024*1024
         total_size = int(r.headers['content-length'])
 
         # Download the file from 'url' and save it locally under 'filename'
@@ -42,13 +42,42 @@ def download_urls(urls, path, get_filename_from_url=True):
                 unit='MB',
                 desc=f'{i + 1}/{n_urls}'
             ):
+
                 f.write(data)
+                time.sleep(0.1)
 
         # Interactions
         i += 1
 
         # Definir um intervalo de tempo
-        time.sleep(random.randint(1, 3))
+        time.sleep(random.randint(3, 8))
+
+
+def DownloadFile(url):
+    local_filename = url.split('/')[-1]
+    r = requests.get(url)
+    f = open(local_filename, 'wb')
+    for chunk in r.iter_content(chunk_size=512 * 1024):
+        time.sleep(0.03)
+
+        if chunk:  # filter out keep-alive new chunks
+            f.write(chunk)
+    f.close()
+    return
+
+
+def download_file(url):
+    local_filename = url.split('/')[-1]
+    # NOTE the stream=True parameter below
+    with requests.get(url, stream=True) as r:
+        r.raise_for_status()
+        with open(local_filename, 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                # If you have chunk encoded response uncomment if
+                # and set chunk_size parameter to None.
+                # if chunk:
+                f.write(chunk)
+    return local_filename
 
 
 if __name__ == '__main__':
@@ -57,6 +86,10 @@ if __name__ == '__main__':
         'https://sage.saude.gov.br/dados/sisagua/cadastro_tratamento_de_agua.zip',
         'https://sage.saude.gov.br/dados/sisagua/cadastro_populacao_abastecida.zip',
     ]
-    path = os.path.join('..', '..', '..', 'data')
-    os.makedirs(path, exist_ok=True)
+
+    path = os.path.abspath(os.path.join(os.getcwd(), '..', '..', '..', 'data'))
+    print(path)
+
     download_urls(urls, path)
+    # DownloadFile(urls[1])
+    #download_file(urls[1])

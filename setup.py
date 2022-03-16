@@ -9,7 +9,7 @@ for line in open('requirements.txt'):
     if not li.startswith('#'):
         requirements.append(line.rstrip())
 
-VERSION = (1, 0, 23)  # (1, 0, 7, 'dev0')
+VERSION = (1, 0, 24)  # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
@@ -17,16 +17,30 @@ setup(
     version=__version__,
     author='Michel Metran',
     author_email='michelmetran@gmail.com',
-    description='Small Defs...',
+    description='Um tanto de coisa!',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/open-dsa/gerador_endereco',
-    python_requires='>=3',
-    package_dir={'': 'src'},  # Our packages live under src but src is not a package itself
-    packages=find_packages('src', exclude=['test']),
-    # py_modules = ['traquitanas'],     # Quando trata-se apenas de um módulo
-    install_requires=requirements,
+    url='https://github.com/traquitanas/traquitanas',
     keywords='python, endereço aleatório, address',
+
+    # Python and Packages
+    python_requires='>=3',
+    install_requires=requirements,
+
+    # Entry
+    package_dir={'': 'src'},  # Our packages live under src but src is not a package itself
+
+    # Quando são diversos módulos...
+    packages=find_packages('src', exclude=['test']),
+
+    # Apenas um módulo...
+    # py_modules = ['traquitanas'],     # Quando trata-se apenas de um módulo
+
+    # Dados
+    include_package_data=True,
+    package_data={'': ['data/tab_dec_8468.xlsx']},
+
+    # Classificação
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
