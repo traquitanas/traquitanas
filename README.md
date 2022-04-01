@@ -63,18 +63,11 @@ utils.predict_encoding()
 
 ### Net
 
+```python
+from traquitanas import net
 
-
-<br>
-
-----
-
-## Dados
-
-- ...
-- ...
-- ...
-
+net.scraping.create_driver(download_path)
+```
 <br>
 
 ----
