@@ -3,7 +3,7 @@ requests>=2.25.0
 setuptools>=58.2.0
 chardet>=4.0.0
 folium>=0.12.0
-tqdm>=4.62.3
-click~=8.0.4
+tqdm>=4.50.0
+click>=8.0.0
 selenium~=4.1.0
-#traquitanas~=1.0.25
+

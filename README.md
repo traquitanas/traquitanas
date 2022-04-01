@@ -26,11 +26,7 @@ pip3 install traquitanas --upgrade
 
 ----
 
-### Geoprocessamento
-
-#### Conversão
-
-Funções para converter coordenadas e formatos.
+### Conversão Coordenadas
 
 ```python
 from traquitanas import geo
@@ -44,7 +40,7 @@ geo.converts.df2geojson(df, lat='latitude', long='longitude', remove_coords_prop
 
 ----
 
-#### *Utils*
+### *Utils*
 
 ```python
 from traquitanas import utils
@@ -56,11 +52,6 @@ utils.predict_encoding()
 
 ----
 
-#### *Layers*
-
-
-----
-
 ### Net
 
 ```python
@@ -68,6 +59,7 @@ from traquitanas import net
 
 net.scraping.create_driver(download_path)
 ```
+
 <br>
 
 ----
@@ -75,13 +67,3 @@ net.scraping.create_driver(download_path)
 ## Google Colab
 
 Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab](https://colab.research.google.com/drive/1WfiEeO4jeeiLPiCknGWfvHI-O3b5NbjE?usp=sharing).
-
-<br>
-
-----
-
-## *TODO*
-
-- ...
-- ...
-- ...
