@@ -177,7 +177,6 @@ if __name__ == '__main__':
     url = URLS[0]
     download_path = os.path.join('.')
 
-
     def downloader2(url, resume_byte_pos: int = None):
         """
 
@@ -215,12 +214,7 @@ if __name__ == '__main__':
                     f.write(chunk)
                     pbar.update(len(chunk))
 
-
     # ---------------------------------------------------------------
-
-
-
-
 
     r = requests.head(url)
 
