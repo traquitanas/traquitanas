@@ -17,7 +17,7 @@ def classify_name(name):
     ascii_name = ascii_name.lower()
 
     #
-    url = 'https://servicodados.ibge.gov.br/api/v2/censos/nomes/{}?sexo=F'.format(ascii_name)
+    url = f'https://servicodados.ibge.gov.br/api/v2/censos/nomes/{ascii_name}?sexo=F'
     resp = requests.get(url)
     if resp.status_code == 200:
         json = resp.json()
@@ -27,7 +27,7 @@ def classify_name(name):
             n_feminino_ultimoperiodo = 0
 
     #
-    url = 'https://servicodados.ibge.gov.br/api/v2/censos/nomes/{}?sexo=M'.format(ascii_name)
+    url = f'https://servicodados.ibge.gov.br/api/v2/censos/nomes/{ascii_name}?sexo=M'
     resp = requests.get(url)
     if resp.status_code == 200:
         json = resp.json()
@@ -50,9 +50,10 @@ def classify_name(name):
         sexo = 'Masculino'
         prob = 1 - calc
 
-    print('"{}" é um nome "{}" com {}% de certeza'.format(first_name.title(), sexo, round(prob, 4) * 100))
+    a = round(prob, 4) * 100
+    print(f'"{first_name.title()}" é um nome "{sexo}" com {a} % de certeza')
     return sexo
 
 
 if __name__ == '__main__':
-    classify_name('Michel')
+    classify_name('Samile')
