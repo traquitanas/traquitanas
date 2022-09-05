@@ -9,7 +9,7 @@ for line in open('requirements.txt'):
     if not li.startswith('#'):
         requirements.append(line.rstrip())
 
-VERSION = (1, 0, 33)  # (1, 0, 7, 'dev0')
+VERSION = (1, 0, 34)  # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
@@ -27,19 +27,6 @@ setup(
     python_requires='>=3',
     install_requires=requirements,
 
-    # Entry
-    package_dir={'': 'src'},  # Our packages live under src but src is not a package itself
-
-    # Quando são diversos módulos...
-    packages=find_packages('src', exclude=['test']),
-
-    # Apenas um módulo...
-    # py_modules = ['traquitanas'],     # Quando trata-se apenas de um módulo
-
-    # Dados
-    include_package_data=True,
-    package_data={'': ['data/tab_dec_8468.xlsx']},
-
     # Classificação
     classifiers=[
         'Programming Language :: Python :: 3',
@@ -48,6 +35,19 @@ setup(
         'Natural Language :: Portuguese',
         'Intended Audience :: Developers',
     ],
+
+    # Entry
+    #package_dir={'': 'src'},  # Our packages live under src but src is not a package itself
+
+    # Quando são diversos módulos...
+    packages=find_packages(),
+
+    # Apenas um módulo...
+    # py_modules = ['traquitanas'],     # Quando trata-se apenas de um módulo
+
+    # Dados
+    #include_package_data=True,
+    #package_data={'': ['data/tab_dec_8468.xlsx']},
 )
 
 # TODO: Add version in traquitanas.__version__
