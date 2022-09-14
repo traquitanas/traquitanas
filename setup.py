@@ -1,7 +1,11 @@
 from setuptools import setup, find_packages
 
+
+
 with open('README.md', 'r') as f:
     long_description = f.read()
+
+
 
 requirements = []
 for line in open('requirements.txt'):
@@ -9,8 +13,13 @@ for line in open('requirements.txt'):
     if not li.startswith('#'):
         requirements.append(line.rstrip())
 
-VERSION = (1, 0, 36)  # (1, 0, 7, 'dev0')
+
+
+VERSION = (1, 0, 37)  # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
+
+
+
 
 setup(
     name='traquitanas',  # Nome (não precisa ser o nome do repositório, nem de qualquer pasta...)
