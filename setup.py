@@ -1,11 +1,7 @@
 from setuptools import setup, find_packages
 
-
-
 with open('README.md', 'r') as f:
     long_description = f.read()
-
-
 
 requirements = []
 for line in open('requirements.txt'):
@@ -13,13 +9,8 @@ for line in open('requirements.txt'):
     if not li.startswith('#'):
         requirements.append(line.rstrip())
 
-
-
-VERSION = (1, 0, 37)  # (1, 0, 7, 'dev0')
+VERSION = (1, 0, 38)  # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
-
-
-
 
 setup(
     name='traquitanas',  # Nome (não precisa ser o nome do repositório, nem de qualquer pasta...)
@@ -46,7 +37,7 @@ setup(
     ],
 
     # Entry
-    #package_dir={'': 'src'},  # Our packages live under src but src is not a package itself
+    # package_dir={'': 'src'},  # Our packages live under src but src is not a package itself
 
     # Quando são diversos módulos...
     packages=find_packages(),
@@ -55,8 +46,8 @@ setup(
     # py_modules = ['traquitanas'],     # Quando trata-se apenas de um módulo
 
     # Dados
-    #include_package_data=True,
-    #package_data={'': ['data/tab_dec_8468.xlsx']},
+    # include_package_data=True,
+    # package_data={'': ['data/tab_dec_8468.xlsx']},
 )
 
 # TODO: Add version in traquitanas.__version__
