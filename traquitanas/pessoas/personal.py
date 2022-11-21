@@ -6,8 +6,9 @@ Módulo com questões relacionadas ao nome das pessoas.
 
 
 import random
-import requests
 from unicodedata import normalize
+
+import requests
 
 
 def classify_name(name):
@@ -20,7 +21,11 @@ def classify_name(name):
     """
     # Ajusta Nome
     first_name = name.split(' ')[0]
-    ascii_name = normalize('NFKD', first_name).encode('ascii', errors='ignore').decode('ascii')
+    ascii_name = (
+        normalize('NFKD', first_name)
+        .encode('ascii', errors='ignore')
+        .decode('ascii')
+    )
     ascii_name = ascii_name.lower()
 
     #
@@ -35,21 +40,24 @@ def classify_name(name):
 
     #
     url = f'https://servicodados.ibge.gov.br/api/v2/censos/nomes/{ascii_name}?sexo=M'
-    resp = requests.get(url)
+    resp = requests.get(url, timeout=60)
     if resp.status_code == 200:
         json = resp.json()
         if len(json) > 0:
             n_masculino_ultimoperiodo = json[0]['res'][-1]['frequencia']
+            
         else:
             n_masculino_ultimoperiodo = 0
 
     try:
-        calc = n_feminino_ultimoperiodo / (n_feminino_ultimoperiodo + n_masculino_ultimoperiodo)
+        aa = n_feminino_ultimoperiodo + n_masculino_ultimoperiodo
+        calc = n_feminino_ultimoperiodo / aa
+
     except Exception as e:
         print(e)
         calc = random.random()
 
-    prob_limiar = (95 / 100)
+    prob_limiar = 95 / 100
     if calc > prob_limiar:
         sexo = 'Feminino'
         prob = calc

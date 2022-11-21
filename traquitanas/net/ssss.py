@@ -1,11 +1,14 @@
-import os.path
+"""
+Funções
+"""
 
-import click
 import hashlib
 import os
-import requests
-
+import os.path
 from pathlib import Path
+
+import click
+import requests
 from tqdm import tqdm
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
@@ -15,7 +18,7 @@ URL_BASE = 'http://www.patentsview.org/data'
 
 URLS = [
     f'{URL_BASE}/20171226/botanic.tsv.zip',
-    f'{URL_BASE}/20171226/cpc_subsection.tsv.zip'
+    f'{URL_BASE}/20171226/cpc_subsection.tsv.zip',
 ]
 """List: Contains urls of files which need to be downloaded.
 Make sure that you add a hash in the same position in ``HASHES`` so that the
@@ -49,8 +52,9 @@ def downloader(position: int, resume_byte_pos: int = None):
 
     # Append information to resume download at specific byte position
     # to header
-    resume_header = ({'Range': f'bytes={resume_byte_pos}-'}
-                     if resume_byte_pos else None)
+    resume_header = (
+        {'Range': f'bytes={resume_byte_pos}-'} if resume_byte_pos else None
+    )
 
     # Establish connection
     r = requests.get(url, stream=True, headers=resume_header)
@@ -62,10 +66,16 @@ def downloader(position: int, resume_byte_pos: int = None):
     file = DOWNLOAD_FOLDER / url.split('/')[-1]
 
     with open(file, mode) as f:
-        with tqdm(total=file_size, unit='B',
-                  unit_scale=True, unit_divisor=1024,
-                  desc=file.name, initial=initial_pos,
-                  ascii=True, miniters=1) as pbar:
+        with tqdm(
+            total=file_size,
+            unit='B',
+            unit_scale=True,
+            unit_divisor=1024,
+            desc=file.name,
+            initial=initial_pos,
+            ascii=True,
+            miniters=1,
+        ) as pbar:
             for chunk in r.iter_content(32 * block_size):
                 f.write(chunk)
                 pbar.update(len(chunk))
@@ -129,8 +139,10 @@ def validate_file(position: int) -> None:
         assert sha.hexdigest() == hash
     except AssertionError:
         file = URLS[position].split("/")[-1]
-        click.echo(f'File {file} is corrupt. '
-                   'Delete it manually and restart the program.')
+        click.echo(
+            f'File {file} is corrupt. '
+            'Delete it manually and restart the program.'
+        )
     else:
         click.echo(f'File {file} is validated.')
 
@@ -170,7 +182,9 @@ def validate():
 
 if __name__ == '__main__':
     # cli()
-    URLS = ['https://sage.saude.gov.br/dados/sisagua/cadastro_pontos_captacao.zip']
+    URLS = [
+        'https://sage.saude.gov.br/dados/sisagua/cadastro_pontos_captacao.zip'
+    ]
     # position = 0
     # downloader(position, resume_byte_pos=200000)
 
@@ -188,7 +202,8 @@ if __name__ == '__main__':
         # Append information to resume download at specific byte position
         # to header
         resume_header = (
-            {'Range': f'bytes={resume_byte_pos}-'} if resume_byte_pos else None)
+            {'Range': f'bytes={resume_byte_pos}-'} if resume_byte_pos else None
+        )
 
         # Establish connection
         r = requests.get(url, stream=True, headers=resume_header)
@@ -208,7 +223,7 @@ if __name__ == '__main__':
                 desc=file.name,
                 initial=initial_pos,
                 ascii=True,
-                miniters=1
+                miniters=1,
             ) as pbar:
                 for chunk in r.iter_content(32 * block_size):
                     f.write(chunk)

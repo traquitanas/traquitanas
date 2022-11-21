@@ -1,3 +1,7 @@
+"""
+
+"""
+
 import os
 import requests
 from selenium import webdriver
@@ -8,7 +12,7 @@ def create_driver(
     download_path,
     headless=False,
     adds_path=os.path.join('..', 'adds'),
-    log_path=os.path.join('..', 'logs')
+    log_path=os.path.join('..', 'logs'),
 ):
     """
 
@@ -37,11 +41,12 @@ def create_driver(
     profile.set_preference('browser.download.folderList', 2)
     profile.set_preference('browser.download.dir', download_path)
     profile.set_preference('browser.download.manager.showWhenStarting', 'false')
-    profile.set_preference('browser.helperApps.neverAsk.saveToDisk',
-                           'application/octet-stream;application/vnd.ms-excel;text/html')
+    profile.set_preference(
+        'browser.helperApps.neverAsk.saveToDisk',
+        'application/octet-stream;application/vnd.ms-excel;text/html',
+    )
 
-
-     #profile.set_preference('browser.download.manager.showWhenStarting', False)
+    # profile.set_preference('browser.download.manager.showWhenStarting', False)
     # profile.set_preference('browser.helperApps.neverAsk.saveToDisk','application/zip,application/vnd.google-earth.kml+xml,application/rar,application/pdf,application/vnd.ms-excel,application/octet-stream,application/msword,text/xml,text/kml,application/pdf,application/vnd.adobe.xfdf,application/vnd.fdf,application/vnd.adobe.xdp+xml,image/x-png,image/png,image/jpeg,text/plain,text/html,application/x-msdownload')
     # profile.set_preference('browser.helperApps.alwaysAsk.force', False)
     profile.set_preference('browser.aboutConfig.showWarning', False)
@@ -64,9 +69,11 @@ def create_driver(
     driver = webdriver.Firefox(
         firefox_profile=profile,
         options=options,
-        service_log_path=os.path.join(log_path, 'geckodriver.log')
+        service_log_path=os.path.join(log_path, 'geckodriver.log'),
     )
-    driver.install_addon(os.path.abspath(os.path.join(adds_path, 'xpath.xpi')), temporary=True)
+    driver.install_addon(
+        os.path.abspath(os.path.join(adds_path, 'xpath.xpi')), temporary=True
+    )
     return driver
 
 

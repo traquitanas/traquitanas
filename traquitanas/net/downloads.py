@@ -1,8 +1,16 @@
+"""
+_summary_
+
+:return: _description_
+:rtype: _type_
+"""
+
 import os
-import time
 import random
+import time
+
 import requests
-from tqdm.notebook import trange, tqdm
+from tqdm.notebook import tqdm, trange
 
 
 def download_urls(urls, path, get_filename_from_url=True):
@@ -31,7 +39,7 @@ def download_urls(urls, path, get_filename_from_url=True):
 
         # File size
         r = requests.get(url, stream=True)
-        chunk_size = 1024*1024
+        chunk_size = 1024 * 1024
         total_size = int(r.headers['content-length'])
 
         # Download the file from 'url' and save it locally under 'filename'
@@ -40,7 +48,7 @@ def download_urls(urls, path, get_filename_from_url=True):
                 iterable=r.iter_content(chunk_size=chunk_size),
                 total=int(total_size / chunk_size),
                 unit='MB',
-                desc=f'{i + 1}/{n_urls}'
+                desc=f'{i + 1}/{n_urls}',
             ):
 
                 f.write(data)
@@ -53,7 +61,13 @@ def download_urls(urls, path, get_filename_from_url=True):
         time.sleep(random.randint(3, 8))
 
 
-def DownloadFile(url):
+def download_file_upper(url):
+    """
+    _summary_
+
+    :param url: _description_
+    :type url: _type_
+    """
     local_filename = url.split('/')[-1]
     r = requests.get(url)
     f = open(local_filename, 'wb')
@@ -67,9 +81,17 @@ def DownloadFile(url):
 
 
 def download_file(url):
+    """
+    _summary_
+
+    :param url: _description_
+    :type url: _type_
+    :return: _description_
+    :rtype: _type_
+    NOTE the stream=True parameter below
+    """
     local_filename = url.split('/')[-1]
-    # NOTE the stream=True parameter below
-    with requests.get(url, stream=True) as r:
+    with requests.get(url, timeout=60, stream=True) as r:
         r.raise_for_status()
         with open(local_filename, 'wb') as f:
             for chunk in r.iter_content(chunk_size=8192):
@@ -92,4 +114,4 @@ if __name__ == '__main__':
 
     download_urls(urls, path)
     # DownloadFile(urls[1])
-    #download_file(urls[1])
+    # download_file(urls[1])

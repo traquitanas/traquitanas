@@ -1,15 +1,20 @@
-from setuptools import setup, find_packages
+"""
+Setup
+"""
 
-with open('README.md', 'r') as f:
+from setuptools import find_packages, setup
+
+
+with open('README.md', 'r', encoding='utf-8') as f:
     long_description = f.read()
 
 requirements = []
-for line in open('requirements.txt'):
+for line in open('requirements.txt', encoding='utf-8'):
     li = line.strip()
     if not li.startswith('#'):
         requirements.append(line.rstrip())
 
-VERSION = (1, 0, 38)  # (1, 0, 7, 'dev0')
+VERSION = (1, 0, 39)  # (1, 0, 7, 'dev0')
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
@@ -22,11 +27,9 @@ setup(
     long_description_content_type='text/markdown',
     url='https://github.com/traquitanas/traquitanas',
     keywords='python, funções aleatórias',
-
     # Python and Packages
     python_requires='>=3',
     install_requires=requirements,
-
     # Classificação
     classifiers=[
         'Programming Language :: Python :: 3',
@@ -35,16 +38,12 @@ setup(
         'Natural Language :: Portuguese',
         'Intended Audience :: Developers',
     ],
-
     # Entry
     # package_dir={'': 'src'},  # Our packages live under src but src is not a package itself
-
     # Quando são diversos módulos...
     packages=find_packages(),
-
     # Apenas um módulo...
     # py_modules = ['traquitanas'],     # Quando trata-se apenas de um módulo
-
     # Dados
     # include_package_data=True,
     # package_data={'': ['data/tab_dec_8468.xlsx']},

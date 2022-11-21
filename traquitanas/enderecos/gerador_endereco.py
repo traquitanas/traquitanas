@@ -1,7 +1,14 @@
-import random
-import requests
-from pycep_correios import get_address_from_cep, WebService
+"""
+_summary_
 
+:return: _description_
+:rtype: _type_
+"""
+
+import random
+
+import requests
+from pycep_correios import WebService, get_address_from_cep
 
 # # Set Version
 # VERSION = (1, 0, 15) #VERSION = (1, 0, 7, 'dev0')
@@ -19,13 +26,39 @@ def get_list_ceps_bairros(estado='sp', municipio='piracicaba', loops=20):
     :return: Output consiste em duas listas (list_ceps, list_bairros)
     """
     termos = [
-        'rua', 'avenida', 'praça', 'bosque',  # Padrão
-        'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
-        'julho', 'agosto', 'setembro', 'outubro', 'novembro',
+        'rua',
+        'avenida',
+        'praça',
+        'bosque',  # Padrão
+        'janeiro',
+        'fevereiro',
+        'março',
+        'abril',
+        'maio',
+        'junho',
+        'julho',
+        'agosto',
+        'setembro',
+        'outubro',
+        'novembro',
         'dezembro',  # Meses
-        'marechal', 'sargento', 'duque', 'soldado', 'capitão', 'major',  # Patentes
-        'dom', 'senhor', 'senhora',  # Pronomes de Tratamento
-        'almeida', 'caetano', 'pedro', 'barbosa', 'rui', 'pinto', 'joão', 'são',  # Nomes
+        'marechal',
+        'sargento',
+        'duque',
+        'soldado',
+        'capitão',
+        'major',  # Patentes
+        'dom',
+        'senhor',
+        'senhora',  # Pronomes de Tratamento
+        'almeida',
+        'caetano',
+        'pedro',
+        'barbosa',
+        'rui',
+        'pinto',
+        'joão',
+        'são',  # Nomes
     ]
     i = 1
     list_ceps = []
@@ -68,7 +101,9 @@ def get_random_complete_address(cep):
     end['numero'] = f'{random.randrange(1, 999)}'
 
     # Cria uma chave no dict com Endereço Completo
-    end['endereco_completo'] = f'{end["logradouro"]}, {end["numero"]} - {end["bairro"]} - {end["cidade"]}, {end["uf"]} - CEP: {end["cep"]} '
+    end[
+        'endereco_completo'
+    ] = f'{end["logradouro"]}, {end["numero"]} - {end["bairro"]} - {end["cidade"]}, {end["uf"]} - CEP: {end["cep"]} '
     print(f'Endereço Aleatório:\n{end["endereco_completo"]}')
     return {
         'logradouro': end['logradouro'],
@@ -83,6 +118,8 @@ def get_random_complete_address(cep):
 
 if __name__ == '__main__':
     # Para testes apenas
-    list_ceps, list_bairros = get_list_ceps_bairros(estado='sp', municipio='piracicaba')
+    list_ceps, list_bairros = get_list_ceps_bairros(
+        estado='sp', municipio='piracicaba'
+    )
     dict_endereco = get_random_complete_address(random.choice(list_ceps))
     print(dict_endereco)

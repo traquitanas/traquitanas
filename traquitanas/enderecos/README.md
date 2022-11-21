@@ -2,11 +2,11 @@
 
 <br>
 
-Programa para gerar endereços *fakes* aleatórios, definido apenas o município. Elaborado visando popular um bancos de dados para um projeto realizado em um município específico.
+Programa para gerar endereços _fakes_ aleatórios, definido apenas o município. Elaborado visando popular um bancos de dados para um projeto realizado em um município específico.
 
 <br>
 
-----
+---
 
 ### Como Instalar?
 
@@ -18,7 +18,7 @@ pip3 install gerador-endereco --upgrade
 
 <br>
 
-----
+---
 
 ### Como usar?
 
@@ -63,12 +63,12 @@ O resultado será um dicionário com um endereço aleatório, por exemplo:
 
 <br>
 
-Caso tenha interesse, há um [*Google Colab*](https://colab.research.google.com/drive/1fljRarvBgD9Lm3k3PO23a6m_E8Zd5kFL?usp=sharing) para testes.
+Caso tenha interesse, há um [_Google Colab_](https://colab.research.google.com/drive/1fljRarvBgD9Lm3k3PO23a6m_E8Zd5kFL?usp=sharing) para testes.
 
 <br>
 
------
+---
 
-### *TODO*:
+### _TODO_:
 
-1. Ajustar o *output* usando uma *OrderedDicts*;
+1. Ajustar o _output_ usando uma _OrderedDicts_;
