@@ -14,7 +14,7 @@ import tarfile
 from pathlib import Path
 from zipfile import ZipFile
 import requests
-from paths import driver_path, logs_path
+#from paths import driver_path, logs_path
 
 
 def _check_geckodriver_exists(path):
