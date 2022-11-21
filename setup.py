@@ -1,5 +1,9 @@
 """
 Setup
+
+
+TODO: Add version in traquitanas.__version__
+https://stackoverflow.com/questions/17791481/creating-a-version-attribute-for-python-packages-without-getting-into-troubl
 """
 
 from setuptools import find_packages, setup
@@ -14,7 +18,9 @@ for line in open('requirements.txt', encoding='utf-8'):
     if not li.startswith('#'):
         requirements.append(line.rstrip())
 
-VERSION = (1, 0, 40)  # (1, 0, 7, 'dev0')
+
+# Version (1, 0, 7, 'dev0')
+VERSION = (1, 0, 41)
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
@@ -48,6 +54,3 @@ setup(
     # include_package_data=True,
     # package_data={'': ['data/tab_dec_8468.xlsx']},
 )
-
-# TODO: Add version in traquitanas.__version__
-# https://stackoverflow.com/questions/17791481/creating-a-version-attribute-for-python-packages-without-getting-into-troubl

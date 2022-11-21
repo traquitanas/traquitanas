@@ -3,6 +3,7 @@
 [![Publish Python distributions to PyPI](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-pypi.yml/badge.svg)](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-pypi.yml)
 <br>
 [![Publish Python distributions to TestPyPI](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-test-pypi.yml/badge.svg)](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-test-pypi.yml)
+- [GitHub](https://github.com/traquitanas/traquitanas)
 
 <br>
 
@@ -16,7 +17,7 @@ O pacote também tem a função de aprender a empacotar as coisas.
 
 <br>
 
------
+---
 
 ### Install
 
@@ -26,7 +27,7 @@ pip3 install traquitanas --upgrade
 
 <br>
 
-----
+---
 
 ### Conversão Coordenadas
 
@@ -40,9 +41,9 @@ geo.converts.df2geojson(df, lat='latitude', long='longitude', remove_coords_prop
 
 <br>
 
-----
+---
 
-### *Utils*
+### _Utils_
 
 ```python
 from traquitanas import utils
@@ -52,7 +53,7 @@ utils.predict_encoding()
 
 <br>
 
-----
+---
 
 ### Net
 
@@ -64,8 +65,18 @@ driver = net.scraping.create_driver(download_path)
 
 <br>
 
-----
+---
 
 ## Google Colab
 
 Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab](https://colab.research.google.com/drive/1WfiEeO4jeeiLPiCknGWfvHI-O3b5NbjE?usp=sharing).
+
+<br>
+
+---
+
+## _TODO_
+
+1. ...
+2. ...
+3. ...
