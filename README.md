@@ -3,6 +3,7 @@
 [![Publish Python distributions to PyPI](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-pypi.yml/badge.svg)](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-pypi.yml)
 <br>
 [![Publish Python distributions to TestPyPI](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-test-pypi.yml/badge.svg)](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-test-pypi.yml)
+
 - [GitHub](https://github.com/traquitanas/traquitanas)
 
 <br>
@@ -29,14 +30,12 @@ pip3 install traquitanas --upgrade
 
 ---
 
-### Conversão Coordenadas
+### Pessoas
 
 ```python
-from traquitanas import geo
+from traquitanas.pessoas import personal
 
-geo.converts.dms2dd('23°06’12,48”S')
-geo.converts.dms2dd_infoaguas('22 13 52')
-geo.converts.df2geojson(df, lat='latitude', long='longitude', remove_coords_properties=True)
+personal.classify_name('Michel')
 ```
 
 <br>
@@ -77,6 +76,6 @@ Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab]
 
 ## _TODO_
 
-1. ...
+1. Criar *Wiki*
 2. ...
 3. ...

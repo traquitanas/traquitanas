@@ -1,7 +1,6 @@
 """
 Módulo com questões relacionadas ao nome das pessoas.
 
-
 """
 
 
@@ -45,7 +44,7 @@ def classify_name(name):
         json = resp.json()
         if len(json) > 0:
             n_masculino_ultimoperiodo = json[0]['res'][-1]['frequencia']
-            
+
         else:
             n_masculino_ultimoperiodo = 0
 
