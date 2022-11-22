@@ -14,7 +14,6 @@ import tarfile
 from pathlib import Path
 from zipfile import ZipFile
 import requests
-#from paths import driver_path, logs_path
 
 
 def _check_geckodriver_exists(path):
@@ -128,6 +127,7 @@ if __name__ == '__main__':
     from selenium import webdriver
     from selenium.webdriver.firefox.service import Service as FirefoxService
     from selenium.webdriver.firefox.options import Options as FirefoxOptions
+    from paths import driver_path, logs_path
 
     # Services
     gecko_path = get_path_geckodriver(driver_path)

@@ -1,9 +1,12 @@
-
-
+# IDEs
 .vscode/
 .idea/
+
+# Data
 data/
 
+# Scrapy
+scrapy/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
