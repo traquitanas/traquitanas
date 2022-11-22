@@ -42,18 +42,6 @@ personal.classify_name('Michel')
 
 ---
 
-### _Utils_
-
-```python
-from traquitanas import utils
-
-utils.predict_encoding()
-```
-
-<br>
-
----
-
 ### Net
 
 ```python
@@ -76,6 +64,6 @@ Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab]
 
 ## _TODO_
 
-1. Criar *Wiki*
+1. Criar _Wiki_
 2. ...
 3. ...
