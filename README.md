@@ -20,34 +20,10 @@ O pacote também tem a função de aprender a empacotar as coisas.
 
 ---
 
-### Install
+### Como Instalar?!
 
 ```bash
 pip3 install traquitanas --upgrade
-```
-
-<br>
-
----
-
-### Pessoas
-
-```python
-from traquitanas.pessoas import personal
-
-personal.classify_name('Michel')
-```
-
-<br>
-
----
-
-### Net
-
-```python
-from traquitanas import net
-
-driver = net.scraping.create_driver(download_path)
 ```
 
 <br>
@@ -65,5 +41,3 @@ Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab]
 ## _TODO_
 
 1. Criar _Wiki_
-2. ...
-3. ...
