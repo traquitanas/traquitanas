@@ -94,7 +94,7 @@ def _get_geckodriver(path, verify_ssl=False):
         print(f'Geckodriver already in {path}')
 
 
-def get_path_geckodriver(path):
+def get_path_geckodriver(path, verify_ssl=False):
     """
     _summary_
 
@@ -104,7 +104,7 @@ def get_path_geckodriver(path):
     :rtype: _type_
     """
     # Faz download se for necessário
-    _get_geckodriver(path, verify_ssl=False)
+    _get_geckodriver(path, verify_ssl=verify_ssl)
 
     # Path
     if platform.system() == 'Windows':

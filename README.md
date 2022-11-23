@@ -26,11 +26,20 @@ O pacote também tem a função de aprender a empacotar as coisas.
 pip3 install traquitanas --upgrade
 ```
 
+
 <br>
 
 ---
 
-## Google Colab
+### Documentação
+
+Para melhores explicações, veja o [wiki](https://github.com/traquitanas/traquitanas/wiki)
+
+<br>
+
+---
+
+### Google Colab
 
 Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab](https://colab.research.google.com/drive/1WfiEeO4jeeiLPiCknGWfvHI-O3b5NbjE?usp=sharing).
 
@@ -38,6 +47,6 @@ Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab]
 
 ---
 
-## _TODO_
+### _TODO_
 
 1. Criar _Wiki_
