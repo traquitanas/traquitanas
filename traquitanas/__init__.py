@@ -7,7 +7,7 @@ https://stackoverflow.com/questions/4902974/python-import-subpackage-from-a-pack
 """
 
 from traquitanas.net import downloads
-from traquitanas.scrapping import scrapping, gecko
+from traquitanas.scrapping import scrapping, gecko, adds
 
 # Net
-__all__ = ['downloads', 'scrapping', 'gecko']
+__all__ = ['downloads', 'scrapping', 'gecko', 'adds']
