@@ -2,6 +2,10 @@
 ssss
 """
 
+import errno
+import os
+import stat
+
 import chardet
 
 
@@ -28,3 +32,37 @@ def predict_encoding(file_path, n_lines=30):
         raw_data = b''.join([f.readline() for line in range(n_lines)])
     enc = chardet.detect(raw_data)['encoding']
     return enc
+
+
+def handle_remove_readonly(func, path, exc):
+    """
+    dddd
+
+    Example:
+    shutil.rmtree(
+        input_path,
+        ignore_errors=False,
+        onerror=handle_remove_readonly
+    )
+
+    References:
+    https://stackoverflow.com/questions/1213706/what-user-do-python-scripts-run-as-in-windows
+
+    :param func: _description_
+    :type func: _type_
+    :param path: _description_
+    :type path: _type_
+    :param exc: _description_
+    :type exc: _type_
+    """
+
+    excvalue = exc[1]
+    if func in (os.rmdir, os.remove) and excvalue.errno == errno.EACCES:
+        os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)  # 0777
+        func(path)
+    else:
+        raise
+
+
+if __name__ == '__main__':
+    pass
