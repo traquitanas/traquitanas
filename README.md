@@ -5,6 +5,7 @@
 [![Publish Python distributions to TestPyPI](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-test-pypi.yml/badge.svg)](https://github.com/traquitanas/traquitanas/actions/workflows/publish-to-test-pypi.yml)
 
 - [GitHub](https://github.com/traquitanas/traquitanas)
+- [PyPi](https://pypi.org/project/traquitanas)
 
 <br>
 
