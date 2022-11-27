@@ -2,12 +2,38 @@
 ssss
 """
 
+import functools
 import os
+import warnings
+
 import requests
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 
 
+def deprecated(func):
+    """
+    This is a decorator which can be used to mark functions
+    as deprecated. It will result in a warning being emitted
+    when the function is used.
+    https://stackoverflow.com/questions/2536307/decorators-in-the-python-standard-lib-deprecated-specifically
+    """
+
+    @functools.wraps(func)
+    def new_func(*args, **kwargs):
+        warnings.simplefilter('always', DeprecationWarning)  # turn off filter
+        warnings.warn(
+            f'Call to deprecated function {func.__name__}.',
+            category=DeprecationWarning,
+            stacklevel=2,
+        )
+        warnings.simplefilter('default', DeprecationWarning)  # reset filter
+        return func(*args, **kwargs)
+
+    return new_func
+
+
+@deprecated
 def create_driver(
     download_path,
     headless=False,
@@ -23,6 +49,7 @@ def create_driver(
     :return:
     :rtype: object
     """
+    print()
 
     # Create directory
     os.makedirs(adds_path, exist_ok=True)

@@ -11,9 +11,65 @@ Usei em:
 
 import platform
 import tarfile
+import time
 from pathlib import Path
 from zipfile import ZipFile
+
 import requests
+from selenium import webdriver
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from .adds import add_extension_xpath
+
+
+class Driver(webdriver.Firefox):
+    """
+    Cria driver customizado do Selenium
+
+    :param webdriver: _description_
+    :type webdriver: _type_
+    """
+
+    def __init__(self, my_driver_path, my_logs_path, *args, **kwargs):
+        """
+
+        verify_ssl
+
+        :param my_driver_path: _description_
+        :type my_driver_path: pathlib
+        :param my_logs_path: _description_
+        :type my_logs_path: pathlib
+        """
+        # Services
+        gecko_path = get_path_geckodriver(
+            my_driver_path, verify_ssl=kwargs['verify_ssl']
+        )
+
+        # Logs
+        logs_filepath = my_logs_path / 'geckodriver.log'
+
+        # Services
+        my_service = FirefoxService(
+            executable_path=gecko_path, log_path=logs_filepath
+        )
+
+        # Options
+        my_options = FirefoxOptions()
+        my_options.headless = False
+        my_options.set_preference('intl.accept_languages', 'pt-BR, pt')
+
+        # Driver
+        my_driver = super(Driver, self)
+        my_driver.__init__(service=my_service, options=my_options)
+
+    def add_extension_xpath(self, my_adds_path):
+        """
+        Adiciona Xpath extension
+
+        :param my_adds_path: Pasta da Extensão
+        :type my_adds_path: pathlib
+        """
+        add_extension_xpath(self, my_adds_path)
 
 
 def _check_geckodriver_exists(path):
@@ -124,9 +180,6 @@ def get_path_geckodriver(path, verify_ssl=False):
 if __name__ == '__main__':
     # Imports
     import time
-    from selenium import webdriver
-    from selenium.webdriver.firefox.service import Service as FirefoxService
-    from selenium.webdriver.firefox.options import Options as FirefoxOptions
     from paths import driver_path, logs_path
 
     # Services
