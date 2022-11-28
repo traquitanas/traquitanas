@@ -19,7 +19,7 @@ for line in open('requirements.txt', encoding='utf-8'):
 
 
 # Version (1, 0, 7, 'dev0')
-VERSION = (1, 0, 53)
+VERSION = (1, 0, 55)
 __version__ = '.'.join(map(str, VERSION))
 
 setup(
