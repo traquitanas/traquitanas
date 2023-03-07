@@ -7,9 +7,10 @@ https://stackoverflow.com/questions/4902974/python-import-subpackage-from-a-pack
 """
 
 from traquitanas.net import downloads
+from traquitanas.data import convert_to_sql
 from traquitanas.scrapping import adds, gecko, scrapping
 
 # from traquitanas import scrapping
 
 # Net
-__all__ = ['downloads', 'scrapping', 'gecko', 'adds']
+__all__ = ['downloads', 'scrapping', 'gecko', 'adds', 'convert_to_sql']
