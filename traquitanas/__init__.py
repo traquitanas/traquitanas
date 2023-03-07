@@ -6,11 +6,12 @@ https://stackoverflow.com/questions/4902974/python-import-subpackage-from-a-pack
 
 """
 
+import traquitanas
 from traquitanas.net import downloads
-from traquitanas.data import convert_to_sql
+from traquitanas import data
 from traquitanas.scrapping import adds, gecko, scrapping
+from traquitanas import scrapping
 
-# from traquitanas import scrapping
 
 # Net
-__all__ = ['downloads', 'scrapping', 'gecko', 'adds', 'convert_to_sql']
+__all__ = ['downloads', 'scrapping', 'gecko', 'adds', 'data']

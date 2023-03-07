@@ -3,7 +3,7 @@
 .idea/
 
 # Data
-data/
+#data/
 
 # Scrapy
 scrapy/
