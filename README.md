@@ -50,4 +50,4 @@ Para testes rápidos sobre o funcionamento do pacote, elaborei um [Google Colab]
 
 ### _TODO_
 
-1. Criar _Wiki_
+1. Criar _iki_
