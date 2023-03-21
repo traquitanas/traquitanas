@@ -147,7 +147,8 @@ def _get_geckodriver(path, verify_ssl=False):
                 tar_ref.extractall(path)
 
     elif has_geckodriver:
-        print(f'Geckodriver already in {path}')
+        #print(f'Geckodriver already in {path}')
+        pass
 
 
 def get_path_geckodriver(path, verify_ssl=False):
